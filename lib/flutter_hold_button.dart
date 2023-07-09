@@ -4,6 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+const _step = Duration(milliseconds: 100);
+
 class HoldButton extends StatefulWidget {
   const HoldButton({
     Key? key,
@@ -38,10 +40,10 @@ class _HoldButtonState extends State<HoldButton> {
       _isActive = true;
     });
     _timer = Timer.periodic(
-      const Duration(seconds: 1),
+      _step,
       (t) {
         setState(() {
-          _currentDuration += const Duration(seconds: 1);
+          _currentDuration +=  _step;
 
           if (_currentDuration >= widget.duration) {
             stop();
@@ -61,6 +63,11 @@ class _HoldButtonState extends State<HoldButton> {
 
   void _tapUp(TapUpDetails details) {
     stop();
+  }
+
+  void _tapDown(TapDownDetails details) {
+    _reset();
+    _start();
   }
 
   @override
@@ -110,10 +117,5 @@ class _HoldButtonState extends State<HoldButton> {
         ),
       ),
     );
-  }
-
-  void _tapDown(TapDownDetails details) {
-    _reset();
-    _start();
   }
 }
