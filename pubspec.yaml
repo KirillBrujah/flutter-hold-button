@@ -1,7 +1,7 @@
 name: flutter_hold_button
 description: Flutter widget "Hold to action" Button
 version: 0.0.1
-homepage:
+homepage: https://github.com/KirillBrujah/flutter-hold-button
 
 environment:
   sdk: '>=2.19.2 <3.0.0'
